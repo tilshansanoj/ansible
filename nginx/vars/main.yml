@@ -1,0 +1,4 @@
+#SPDX-License-Identifier: MIT-0
+---
+# vars file for webserver
+nginx_custom_directory: /home/ubuntu/nginx
