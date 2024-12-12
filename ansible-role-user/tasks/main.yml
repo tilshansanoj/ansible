@@ -1,0 +1,16 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for ansible-role-user
+- name: Include user passwords
+  ansible.builtin.include_vars:
+    file: passwords.yml
+
+- name: Ensure users are present
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    password: "{{ item.password }}"
+    groups: "{{ item.groups | default(omit) }}"
+    shell: "{{ item.shell }}"
+    home: "{{ item.home }}"
+  with_items: "{{ users }}"
+  become: true

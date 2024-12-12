@@ -1,5 +1,20 @@
 - hosts: all
   become: true
   roles:
-    - nginx
+    # - nginx
+    # - docker
+    - ansible-role-user
+
+- hosts: backend
+  become: true
+  roles:
+    # - nginx
     - docker
+    # - ansible-role-user
+
+- hosts: frontend
+  become: true
+  roles:
+    - nginx
+    # - docker
+    # - ansible-role-user
